@@ -1,4 +1,4 @@
-﻿namespace Assistant
+﻿namespace Assistant_sample
 {
    public static class Credentials
    {
