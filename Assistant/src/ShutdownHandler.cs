@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Timers;
 using static Assistant.Program;
 
@@ -88,5 +89,10 @@ namespace Assistant
       public bool Cancel_Shutdown() => Initialize(mShutdownTime.AddDays(1));
 
       public void Shutdown() => Process.Start("shutdown", "/s /t 0");
+
+      public void LockWorkStation()
+      {
+         Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+      }
    }
 }

@@ -8,7 +8,8 @@
       Set_shutdown_time,
       Pre_shutdown,
       Get_shutdown_timer,
-      Startup
+      Startup,
+      Lock
    }
 
    public struct Command_t
@@ -45,6 +46,7 @@
          new Command_t(Command_e.Pre_shutdown,        "/pre_shutdown",        false,        true,                 "PRE SHUTDOWN",         "The system will shutdown in 5 minutes!"),
          new Command_t(Command_e.Get_shutdown_timer,  "/get_shutdown_timer",  false,        false,                "SHUTDOWN TIMER STATE", ""),
          new Command_t(Command_e.Startup,             "/startup",             false,        true,                 "SYSTEM",               "Assistant started"),
+         new Command_t(Command_e.Lock,                "/lock",                false,        true,                 "LOCK ACCOUNT",         "Computer locked"),
       };
    }
 }

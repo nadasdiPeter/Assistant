@@ -67,6 +67,10 @@ namespace Assistant
                Notification("ShutdownHandler", command.Command, "Shutdown will occur in: " + mShutdownHandler.Get_ShutdownTimerState());
                break;
 
+            case Command_e.Lock:
+               mShutdownHandler.LockWorkStation();
+               break;
+
             default:
                /* No action required */
                break;
