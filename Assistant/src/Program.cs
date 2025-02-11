@@ -68,7 +68,7 @@ namespace Assistant
                break;
 
             case Command_e.Lock:
-               mShutdownHandler.LockWorkStation();
+               mShutdownHandler.Lock();
                break;
 
             default:
@@ -80,7 +80,7 @@ namespace Assistant
       private void Notification(string component, string command, string message)
       {
          mTelegramBot.Notification(component, command, message);
-         mTrayApp.Notification(component, command + "\n" + message);
+         mTrayApp.Notification(component, message);
       }
 
       static void Main(string[] args) => new Program().Start();

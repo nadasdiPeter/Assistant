@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Timers;
 using static Assistant.Program;
 
@@ -64,8 +63,20 @@ namespace Assistant
          string[] t = time.Split(':');
 
          int hour, minute;
+
          int.TryParse(t[0], out hour);
          int.TryParse(t[1], out minute);
+
+         /* Pre-shutdown time calculation */
+         if(minute < 5)
+         {
+            hour = hour - 1;
+            minute = 60 - (5-minute);
+         }
+         else
+         {
+            minute = minute - 5;
+         }
 
          Properties.Settings.Default.DEFAULT_SHUTDOWN_HOUR = hour;
          Properties.Settings.Default.DEFAULT_SHUTDOWN_MINUTE = minute;
@@ -90,9 +101,6 @@ namespace Assistant
 
       public void Shutdown() => Process.Start("shutdown", "/s /t 0");
 
-      public void LockWorkStation()
-      {
-         Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
-      }
+      public void Lock() => Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
    }
 }
