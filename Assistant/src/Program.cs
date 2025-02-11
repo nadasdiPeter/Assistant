@@ -31,14 +31,16 @@ namespace Assistant
                      }
                  );
          TrayApp_Thread.Start();
+
+         /* Triggers notification about the startup  */
+         Callback(Configuration.commands[(int)Command_e.Startup]);
       }
 
 
       /* Callback function */
       public void Callback(Command_t command, string[] args = null)
       {
-         if( command.NotificationRequired )
-            Notification(command.Title, command.Command, command.Message);
+         if( command.NotificationRequired ) Notification(command.Title, command.Command, command.Message);
 
          switch ( command.Id )
          {
@@ -69,7 +71,6 @@ namespace Assistant
                /* No action required */
                break;
          }
-
       }
 
       private void Notification(string component, string command, string message)
